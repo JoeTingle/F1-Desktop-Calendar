@@ -1,0 +1,154 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <RootNamespace>F1_Desktop_Calendar</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<RestoreFallbackFolders>clear</RestoreFallbackFolders>
+	<StartupObject>F1_Desktop_Calendar.App</StartupObject>
+	<PackageIcon>calendar-1.1s-800px(1).png</PackageIcon>
+	<ApplicationIcon>trafficbig.ico</ApplicationIcon>
+	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
+	<PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="brazil.png" />
+    <None Remove="error.ico" />
+    <None Remove="flag.jpg" />
+    <None Remove="flagwide.png" />
+    <None Remove="Fonts\Titillium-Black.otf" />
+    <None Remove="Fonts\Titillium-Bold.otf" />
+    <None Remove="Fonts\Titillium-BoldItalic.otf" />
+    <None Remove="Fonts\Titillium-BoldUpright.otf" />
+    <None Remove="Fonts\Titillium-Light.otf" />
+    <None Remove="Fonts\Titillium-LightItalic.otf" />
+    <None Remove="Fonts\Titillium-LightUpright.otf" />
+    <None Remove="Fonts\Titillium-Regular.otf" />
+    <None Remove="Fonts\Titillium-RegularItalic.otf" />
+    <None Remove="Fonts\Titillium-RegularUpright.otf" />
+    <None Remove="Fonts\Titillium-Semibold.otf" />
+    <None Remove="Fonts\Titillium-SemiboldItalic.otf" />
+    <None Remove="Fonts\Titillium-SemiboldUpright.otf" />
+    <None Remove="Fonts\Titillium-Thin.otf" />
+    <None Remove="Fonts\Titillium-ThinItalic.otf" />
+    <None Remove="Fonts\Titillium-ThinUpright.otf" />
+    <None Remove="grey-background.jpg" />
+    <None Remove="GreyDotBkg.jpg" />
+    <None Remove="hungary.png" />
+    <None Remove="P1.png" />
+    <None Remove="P2.png" />
+    <None Remove="P3.png" />
+    <None Remove="traffic.ico" />
+    <None Remove="trafficwhite.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="error.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="brazil.png" />
+    <Content Include="flag.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flagwide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="GreyDotBkg.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="hungary.png" />
+    <Content Include="trafficbig.ico" />
+    <None Include="..\..\..\Downloads\calendar-1.1s-800px(1).png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <Resource Include="grey-background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlurryControls" Version="1.0.24" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Titillium-Black.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Bold.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-BoldItalic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-BoldUpright.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Light.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-LightItalic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-LightUpright.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Regular.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-RegularItalic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-RegularUpright.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Semibold.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-SemiboldItalic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-SemiboldUpright.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-Thin.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-ThinItalic.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Titillium-ThinUpright.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="traffic.ico" />
+    <Resource Include="trafficwhite.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="P1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="P2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="P3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
