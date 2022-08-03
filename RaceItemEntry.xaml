@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel x:Name="StackPanelGrid"  Orientation="Horizontal" Opacity="0" >
             <TextBlock x:Name="Race_Number" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="15,0,0,0" Foreground="White" Height="30" Width="38" FontFamily="Titillium Regular"/>
-            <Image x:Name="Race_Img" Source="/grey-background.jpg" Width="20" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <Image x:Name="Race_Img" Source="/Images/grey-background.jpg" Width="20" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
             <TextBlock x:Name="Race_Name" Text="" VerticalAlignment="Center" FontSize="20"  Foreground="LightGray" Width="300" Margin="10,0,0,0" TextAlignment="Left" TextWrapping="NoWrap" FontWeight="Normal" FontFamily="Titillium Regular"/>
         </StackPanel>
         <TextBlock x:Name="Race_Date" Text="5th September" Opacity="0" Foreground="White" FontFamily="Titillium Regular" Height="20" Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Margin="324,0,0,0"/>
@@ -25,7 +25,7 @@
             </Grid.RenderTransform>
             <Border x:Name="P1IconColor" Background="Cyan" Margin="-18,0,75,0" RenderTransformOrigin="0,0.5">
                 <Border.OpacityMask>
-                    <ImageBrush x:Name="P1Icon" ImageSource="/P1.png" Stretch="Fill" TileMode="None"/>
+                    <ImageBrush x:Name="P1Icon" ImageSource="/Images/P1.png" Stretch="Fill" TileMode="None"/>
                 </Border.OpacityMask>
             </Border>
             <TextBlock x:Name="P1Name" Text="HAM" FontSize="15"  Foreground="LightGray" VerticalAlignment="Center" TextAlignment="Left" TextWrapping="NoWrap" FontWeight="Light" Margin="0,0,18,0"/>
@@ -41,7 +41,7 @@
             </Grid.RenderTransform>
             <Border x:Name="P2IconColor" Background="Blue" Margin="-18,0,75,0" RenderTransformOrigin="0,0.5">
                 <Border.OpacityMask>
-                    <ImageBrush x:Name="P2Icon" ImageSource="/P2.png" Stretch="Fill" TileMode="None"/>
+                    <ImageBrush x:Name="P2Icon" ImageSource="/Images/P2.png" Stretch="Fill" TileMode="None"/>
                 </Border.OpacityMask>
             </Border>
             <TextBlock x:Name="P2Name" Text="VER" FontSize="15"  Foreground="LightGray" VerticalAlignment="Center" TextAlignment="Left" TextWrapping="NoWrap" FontWeight="Light" Margin="0,0,18,0"/>
@@ -57,7 +57,7 @@
             </Grid.RenderTransform>
             <Border x:Name="P3IconColor" Background="Red" Margin="-18,0,75,0" RenderTransformOrigin="0,0.5">
                 <Border.OpacityMask>
-                    <ImageBrush x:Name="P3Icon" ImageSource="/P3.png" Stretch="Fill" TileMode="None"/>
+                    <ImageBrush x:Name="P3Icon" ImageSource="/Images/P3.png" Stretch="Fill" TileMode="None"/>
                 </Border.OpacityMask>
             </Border>
             <TextBlock x:Name="P3Name" Text="LEC" FontSize="15"  Foreground="LightGray" VerticalAlignment="Center" TextAlignment="Left" TextWrapping="NoWrap" FontWeight="Light" Margin="0,0,18,0"/>

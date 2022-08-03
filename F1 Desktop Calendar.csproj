@@ -9,7 +9,7 @@
 	<RestoreFallbackFolders>clear</RestoreFallbackFolders>
 	<StartupObject>F1_Desktop_Calendar.App</StartupObject>
 	<PackageIcon>calendar-1.1s-800px(1).png</PackageIcon>
-	<ApplicationIcon>trafficbig.ico</ApplicationIcon>
+	<ApplicationIcon>Images\trafficwhite.ico</ApplicationIcon>
 	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
@@ -25,10 +25,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="brazil.png" />
-    <None Remove="error.ico" />
-    <None Remove="flag.jpg" />
-    <None Remove="flagwide.png" />
+    <None Remove="Images\brazil.png" />
+    <None Remove="Images\error.ico" />
+    <None Remove="Images\flag.jpg" />
+    <None Remove="Images\flagwide.png" />
     <None Remove="Fonts\Titillium-Black.otf" />
     <None Remove="Fonts\Titillium-Bold.otf" />
     <None Remove="Fonts\Titillium-BoldItalic.otf" />
@@ -45,37 +45,38 @@
     <None Remove="Fonts\Titillium-Thin.otf" />
     <None Remove="Fonts\Titillium-ThinItalic.otf" />
     <None Remove="Fonts\Titillium-ThinUpright.otf" />
-    <None Remove="grey-background.jpg" />
-    <None Remove="GreyDotBkg.jpg" />
-    <None Remove="hungary.png" />
-    <None Remove="P1.png" />
-    <None Remove="P2.png" />
-    <None Remove="P3.png" />
-    <None Remove="traffic.ico" />
-    <None Remove="trafficwhite.ico" />
+    <None Remove="Images\grey-background.jpg" />
+    <None Remove="Images\GreyDotBkg.jpg" />
+    <None Remove="Images\hungary.png" />
+    <None Remove="Images\P1.png" />
+    <None Remove="Images\P2.png" />
+    <None Remove="Images\P3.png" />
+    <None Remove="Images\traffic.ico" />
+    <None Remove="Images\trafficwhite.ico" />
+    <None Remove="trafficbig.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="error.ico">
+    <Resource Include="Images\error.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Content Include="brazil.png" />
-    <Content Include="flag.jpg">
+    <Content Include="Images\brazil.png" />
+    <Content Include="Images\flag.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="flagwide.png">
+    <Content Include="Images\flagwide.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="GreyDotBkg.jpg">
+    <Resource Include="Images\GreyDotBkg.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="hungary.png" />
-    <Content Include="trafficbig.ico" />
-    <None Include="..\..\..\Downloads\calendar-1.1s-800px(1).png">
+    <Content Include="Images\hungary.png" />
+    <Content Include="Images\trafficwhite.ico" />
+    <None Include="..\..\..\Downloads\calendar-1.1s-800px(1).png" Link="Images\calendar-1.1s-800px%281%29.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <Resource Include="grey-background.jpg">
+    <Resource Include="Images\grey-background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -135,18 +136,19 @@
     <Resource Include="Fonts\Titillium-ThinUpright.otf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="traffic.ico" />
-    <Resource Include="trafficwhite.ico" />
+    <Resource Include="Images\traffic.ico" />
+    <Resource Include="Images\trafficwhite.ico" />
+    <Resource Include="trafficbig.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="P1.png">
+    <Content Include="Images\P1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P2.png">
+    <Content Include="Images\P2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P3.png">
+    <Content Include="Images\P3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

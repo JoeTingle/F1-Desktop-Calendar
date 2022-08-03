@@ -793,7 +793,7 @@ namespace F1_Desktop_Calendar
 				if (i < RacesList.Length)
 				{
 					ImageBrush imgBrush = new ImageBrush();
-					imgBrush.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/F1 Desktop Calendar;component/flagwide.png", UriKind.RelativeOrAbsolute));
+					imgBrush.ImageSource = new BitmapImage(new Uri(@"pack://application:,,,/F1 Desktop Calendar;component/Images/flagwide.png", UriKind.RelativeOrAbsolute));
 					imgBrush.Stretch = Stretch.UniformToFill;
 					imgBrush.TileMode = TileMode.Tile;
 					imgBrush.Opacity = 0.045;

@@ -21,7 +21,7 @@
             <Border.Background>
                 <VisualBrush Stretch="Fill">
                     <VisualBrush.Visual>
-                        <Image Source="/GreyDotBkg.jpg" Opacity=".35" Stretch="Fill" />
+                        <Image Source="/Images/GreyDotBkg.jpg" Opacity=".35" Stretch="Fill" />
                     </VisualBrush.Visual>
                 </VisualBrush>
             </Border.Background>
@@ -52,7 +52,7 @@
         </StackPanel>
         <control:NextRace x:Name="NextRaceItem" Margin="0,671,0,0"/>
 
-        <tb:TaskbarIcon x:Name="AppIcon" IconSource="trafficwhite.ico" ToolTipText="F1 Season Calendar">
+        <tb:TaskbarIcon x:Name="AppIcon" ToolTipText="F1 Season Calendar" IconSource="/trafficbig.ico">
 
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu

@@ -9,7 +9,7 @@
     <Grid>
         <Border Background="#FF1F1F1F" />
         <Border Background="#FF1F1F1F" Height="64.5" VerticalAlignment="Top" >
-            <Image x:Name="RaceNameImgMask" Source="/hungary.png" Margin="20,21,20,-16" Opacity="1" Stretch="Fill" >
+            <Image x:Name="RaceNameImgMask" Source="/Images/hungary.png" Margin="20,21,20,-16" Opacity="1" Stretch="Fill" >
                 <Image.OpacityMask>
                     <VisualBrush Stretch="Fill">
                         <VisualBrush.Visual>
