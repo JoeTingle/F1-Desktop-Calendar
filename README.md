@@ -20,3 +20,7 @@ The F1 desktop calendar app will display all of the scheduled races in the curre
 ## Current Issues
 - Run on startup not currently working
 - Occasional crashes on API call (needs delay to complete ?)
+
+## Planned Features
+- Drivers / Constructors Standings
+- Theme Selector (Light / Dark / Custom etc.)
