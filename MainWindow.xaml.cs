@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using System.Windows.Media.Animation;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Collections;
 
 namespace F1_Desktop_Calendar
 {
@@ -453,9 +454,13 @@ namespace F1_Desktop_Calendar
 			//Need internet to start for API call / download
 			CheckInternet();
 
+
 			InitializeComponent();
+			this.Visibility = Visibility.Hidden;
 			RacesList = new RaceItemEntry[] { Race1, Race2, Race3, Race4, Race5, Race6, Race7, Race8, Race9, Race10, Race11, Race12, Race13, Race14,
 												Race15,Race16,Race17,Race18,Race19,Race20,Race21,Race22};
+
+
 
 			//Call and download all race data, requires slight delay to populate all classes/variables
 			APICallAsync();
@@ -463,7 +468,7 @@ namespace F1_Desktop_Calendar
 			WaitThenShowWindow();
 			//Mouse click handler event
 			AddHandler(FrameworkElement.MouseDownEvent, new MouseButtonEventHandler(Window_MouseDown), true);
-			SetStatupMain();
+			SetStartupMain();
 		}
 
 		/// <summary>
@@ -596,7 +601,7 @@ namespace F1_Desktop_Calendar
 			//EnableBlur();
 			var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
 			this.Left = desktopWorkingArea.Right - this.Width;
-			this.Top = desktopWorkingArea.Bottom - this.Height + 2;
+			this.Top = desktopWorkingArea.Bottom - this.Height;
 		}
 
 		/// <summary>
@@ -782,6 +787,15 @@ namespace F1_Desktop_Calendar
 			}
 		}
 
+		public void RestartResultsAPICall()
+		{
+			Debug.WriteLine("\nRESTARTING RESULTS API CALL...	\n)");
+			GetRaceResults();
+			Task.Delay(5000);
+			Debug.WriteLine("\nCALL COMPLETE, ADJUSTING ROUNDS...	\n)");
+			AdjustPrevRounds();
+		}
+
 		/// <summary>
 		/// For each completed race, adds flag background and lowers opacity
 		/// </summary>
@@ -815,14 +829,16 @@ namespace F1_Desktop_Calendar
                     else
                     {
 						Debug.WriteLine("\n\nERROR : Results Data Null (API Call Not Completed ?\n\n)");
+						RestartResultsAPICall();
                     }
 
 				}
 
 			}
 
+
             //Highlight Next Race // Green Background
-            if (CurrentRound >= 0) // Fixing Array out of bounds error (API not loaded current round yet ??)
+            if (CurrentRound > 0) // Fixing Array out of bounds error (API not loaded current round yet ??)
             {
 				RacesList[CurrentRound - 1].Race_Number.FontWeight = FontWeights.ExtraBold;
 				RacesList[CurrentRound - 1].Race_Name.FontWeight = FontWeights.ExtraBold;
@@ -1054,10 +1070,10 @@ namespace F1_Desktop_Calendar
 		/// <param name="e"></param>
         private void SetStartup(object sender, RoutedEventArgs e)
         {
-			SetStatupMain();
+			SetStartupMain();
 		}
 
-		private void SetStatupMain()
+		private void SetStartupMain()
         {
 			var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(
 				"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -1086,7 +1102,7 @@ namespace F1_Desktop_Calendar
         {
 			var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
 			this.Left = desktopWorkingArea.Right - this.Width;
-			this.Top = desktopWorkingArea.Bottom - this.Height + 2;
+			this.Top = desktopWorkingArea.Bottom - this.Height;
 		}
 
 		/// <summary>
@@ -1117,5 +1133,22 @@ namespace F1_Desktop_Calendar
 			System.Diagnostics.Process.Start(Process.GetCurrentProcess().MainModule.FileName);
             System.Windows.Application.Current.Shutdown();
 		}
-	}
+
+		/// <summary>
+		/// Open Driver Standings Window
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        private void MenuItem_Checked_1(object sender, RoutedEventArgs e)
+        {
+			DriverStandings driverStandings = new DriverStandings();
+			driverStandings.Show();
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+			ConstructorStandings constructorStandings = new ConstructorStandings();
+			constructorStandings.Show();
+        }
+    }
 }

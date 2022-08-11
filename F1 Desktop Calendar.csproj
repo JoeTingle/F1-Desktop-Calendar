@@ -51,6 +51,9 @@
     <None Remove="Images\P1.png" />
     <None Remove="Images\P2.png" />
     <None Remove="Images\P3.png" />
+    <None Remove="Images\TeamIcons\Ferrari.png" />
+    <None Remove="Images\TeamIcons\Merc.png" />
+    <None Remove="Images\TeamIcons\redBull.png" />
     <None Remove="Images\traffic.ico" />
     <None Remove="Images\trafficwhite.ico" />
     <None Remove="trafficbig.ico" />
@@ -67,6 +70,15 @@
     <Content Include="Images\flagwide.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\TeamIcons\Ferrari.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\TeamIcons\Merc.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\TeamIcons\redBull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\GreyDotBkg.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -151,6 +163,19 @@
     <Content Include="Images\P3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ConstructorStandings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ConstructorStandings.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace F1_Desktop_Calendar
 {
     /// <summary>
-    /// Interaction logic for NextRace.xaml
+    /// Interaction logic for DriverStandingEntry.xaml
     /// </summary>
-    public partial class NextRace : UserControl
+    public partial class DriverStandingEntry : UserControl
     {
-        public NextRace()
+        public DriverStandingEntry()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DriverStandings driverStandings = new DriverStandings();
-            driverStandings.Show();
         }
     }
 }

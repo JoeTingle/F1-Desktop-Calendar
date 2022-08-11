@@ -7,17 +7,18 @@
         xmlns:control = "clr-namespace:F1_Desktop_Calendar" 
         xmlns:local="clr-namespace:F1_Desktop_Calendar" xmlns:windows="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
         mc:Ignorable="d"
-        Title="Calendar" Height="800" Width="450" ResizeMode="CanMinimize" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" Background="#00FF0000" Closed="Window_Closed" Closing="Window_Closing" Visibility="Hidden">
+        Title="Calendar" Height="800" Width="450" ResizeMode="CanMinimize" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" Background="#00FF0000" Closed="Window_Closed" Closing="Window_Closing" Visibility="Visible">
     <Window.Resources>
         <FontFamily x:Key="F1Font" >/Fonts/#Titillium Bd</FontFamily>
     </Window.Resources>
-    <Grid x:Name="MainGridPanel" MouseDown="Window_MouseDown" PreviewMouseDown="Window_MouseDown" Loaded="Window_Loaded" Margin="0,0,0,0" Background="#00FF0000" RenderTransformOrigin="1,1">
+    <Grid x:Name="MainGridPanel" MouseDown="Window_MouseDown" PreviewMouseDown="Window_MouseDown" Loaded="Window_Loaded" Margin="10,10,10,10" Background="#00FF0000" RenderTransformOrigin="1,1">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform x:Name="rectScale"/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Border x:Name="Border" CornerRadius="10" BorderBrush="#3F000000" BorderThickness="1" >
+        <Border x:Name="Border_Behind" CornerRadius="20" BorderBrush="#3FFFFFFF" BorderThickness="1.75" Opacity="0.115" Margin="-9,-9,-9,-9" Background="#0CFFFFFF"/>
+        <Border x:Name="Border" CornerRadius="10" BorderBrush="#3F000000" BorderThickness="1" Margin="0,0,0,10" >
             <Border.Background>
                 <VisualBrush Stretch="Fill">
                     <VisualBrush.Visual>
@@ -26,7 +27,7 @@
                 </VisualBrush>
             </Border.Background>
         </Border>
-        <StackPanel x:Name="Stack" Margin="0,10,0,0">
+        <StackPanel x:Name="Stack" Margin="0,10,0,115">
             <control:RaceItemEntry x:Name="Race1"/>
             <control:RaceItemEntry x:Name="Race2"/>
             <control:RaceItemEntry x:Name="Race3"/>
@@ -50,18 +51,25 @@
             <control:RaceItemEntry x:Name="Race21"/>
             <control:RaceItemEntry x:Name="Race22"/>
         </StackPanel>
-        <control:NextRace x:Name="NextRaceItem" Margin="0,671,0,0"/>
+        <control:NextRace x:Name="NextRaceItem" Margin="0,676,0,-5"/>
 
-        <tb:TaskbarIcon x:Name="AppIcon" ToolTipText="F1 Season Calendar" IconSource="/trafficbig.ico">
+        <tb:TaskbarIcon x:Name="AppIcon" ToolTipText="F1 Season Calendar" IconSource="/trafficbig.ico" Margin="0,0,0,114">
 
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu
                 Background="White">
-                    <MenuItem Header="Lock Movement ?" IsCheckable="True" IsChecked="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked" StaysOpenOnClick="True" />
-                    <MenuItem x:Name="StartupCheckBox" Header="Run On Startup [W.I.P]" IsCheckable="False" IsChecked="True" Checked="SetStartup" Unchecked="SetStartup" StaysOpenOnClick="True" />
-                    <MenuItem x:Name="ShowResultsCheckBox" Header="Show All Results ?" IsCheckable="True" IsChecked="False" Checked="ShowResultsCheckBox_Checked" Unchecked="ShowResultsCheckBox_Unchecked" StaysOpenOnClick="True" />
-                    <MenuItem Header="Reset Position" Click="MenuItem_Click_1"/>
-                    <MenuItem Header="Exit F1 Calendar" Click="MenuItem_Click"/>
+                    <MenuItem Header="SETTINGS" IsCheckable="False" IsChecked="False" StaysOpenOnClick="True" />
+                    <MenuItem Header="- Lock Movement ?" IsCheckable="True" IsChecked="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked" StaysOpenOnClick="True" />
+                    <MenuItem x:Name="StartupCheckBox" Header="- Run On Startup [W.I.P]" IsCheckable="False" IsChecked="True" Checked="SetStartup" Unchecked="SetStartup" StaysOpenOnClick="True" />
+                    <MenuItem x:Name="ShowResultsCheckBox" Header="- Show All Results ?" IsCheckable="True" IsChecked="False" Checked="ShowResultsCheckBox_Checked" Unchecked="ShowResultsCheckBox_Unchecked" StaysOpenOnClick="True" />
+                    <MenuItem Header="- Reset Position" Click="MenuItem_Click_1"/>
+                    <MenuItem Header="- Exit F1 Calendar" Click="MenuItem_Click"/>
+                    
+                    <MenuItem Header=" " IsCheckable="False" IsChecked="False" StaysOpenOnClick="True" />
+                    
+                    <MenuItem Header="SEASON STANDINGS" IsCheckable="False" IsChecked="False" StaysOpenOnClick="True" />
+                    <MenuItem Header="- Drivers Standings" StaysOpenOnClick="False" Click="MenuItem_Checked_1" />
+                    <MenuItem Header="- Constructors Standings" StaysOpenOnClick="False" Click="MenuItem_Click_2" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
 

@@ -66,6 +66,8 @@ namespace F1_Desktop_Calendar
                 DoubleAnimation ani = new DoubleAnimation(0, TimeSpan.FromSeconds(0.15));
                 ShowResultsText.BeginAnimation(TextBlock.OpacityProperty, ani);
                 FadeResultInOut();
+
+
             }
         }
 

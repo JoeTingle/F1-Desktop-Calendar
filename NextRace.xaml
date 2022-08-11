@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="450">
     <Grid>
-        <Border Background="#FF1F1F1F" />
-        <Border Background="#FF1F1F1F" Height="64.5" VerticalAlignment="Top" >
+        <Border Background="#FF13141D" CornerRadius="20"/>
+        <Border Background="#FF13141D" Height="64" VerticalAlignment="Top" Margin="0,-8,0,0" >
             <Image x:Name="RaceNameImgMask" Source="/Images/hungary.png" Margin="20,21,20,-16" Opacity="1" Stretch="Fill" >
                 <Image.OpacityMask>
                     <VisualBrush Stretch="Fill">
@@ -21,6 +21,6 @@
         </Border>
         <TextBlock x:Name="RoundText" Text="" HorizontalAlignment="Center" FontSize="15" Foreground="Gray" FontWeight="Light" Margin="0,0,0,28" FontFamily="Titillium Lt"/>
         <TextBlock x:Name="RaceName" Text="" HorizontalAlignment="Center" FontSize="28" Foreground="#00B0FF86" FontWeight="Normal" FontStyle="Italic" FontFamily="Titillium Bd"/>
-        <TextBlock x:Name="CountdownText" Text="" HorizontalAlignment="Center" FontSize="28" Foreground="White" FontWeight="ExtraLight" Margin="0,75,0,0" FontStyle="Italic" Opacity="0.5" FontFamily="Titillium Regular"/>
+        <TextBlock x:Name="CountdownText" Text="" HorizontalAlignment="Center" FontSize="25" Foreground="Gray" FontWeight="ExtraLight" Margin="0,65,0,0" FontStyle="Italic" Opacity="0.5" FontFamily="Titillium Regular"/>
     </Grid>
 </UserControl>
