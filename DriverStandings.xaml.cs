@@ -168,6 +168,7 @@ namespace F1_Desktop_Calendar
 		public MRData DriverStandingsData;
 
 		public bool LockMovement = false;
+		public bool AboveResize = false;
 
         public DriverStandings()
         {
@@ -178,12 +179,22 @@ namespace F1_Desktop_Calendar
 
 		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			if (!LockMovement)
+			if (!LockMovement && !AboveResize)
 			{
 				if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed)
 					this.DragMove();
 			}
 
+		}
+
+		private void MouseOver(object sender, MouseEventArgs e)
+        {
+			AboveResize = true;
+        }
+
+		private void MouseExit(object sender, MouseEventArgs e)
+        {
+			AboveResize = false;
 		}
 
 		/// <summary>
@@ -308,5 +319,76 @@ namespace F1_Desktop_Calendar
         {
 			this.Close();
         }
+
+		#region ResizeWindows
+		bool ResizeInProcess = false;
+		private void Resize_Init(object sender, MouseButtonEventArgs e)
+		{
+			Rectangle senderRect = sender as Rectangle;
+			if (senderRect != null)
+			{
+				ResizeInProcess = true;
+				senderRect.CaptureMouse();
+			}
+		}
+
+		private void Resize_End(object sender, MouseButtonEventArgs e)
+		{
+			Rectangle senderRect = sender as Rectangle;
+			if (senderRect != null)
+			{
+				ResizeInProcess = false; ;
+				senderRect.ReleaseMouseCapture();
+			}
+		}
+
+		private void Resizeing_Form(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (ResizeInProcess)
+			{
+				Rectangle senderRect = sender as Rectangle;
+				Window mainWindow = senderRect.Tag as Window;
+				if (senderRect != null)
+				{
+					double width = e.GetPosition(mainWindow).X;
+					double height = e.GetPosition(mainWindow).Y;
+					senderRect.CaptureMouse();
+					if (senderRect.Name.ToLower().Contains("right"))
+					{
+						width += 5;
+						if (width > 0)
+							mainWindow.Width = width;
+					}
+					if (senderRect.Name.ToLower().Contains("left"))
+					{
+						width -= 5;
+						mainWindow.Left += width;
+						width = mainWindow.Width - width;
+						if (width > 0)
+						{
+							mainWindow.Width = width;
+						}
+					}
+					if (senderRect.Name.ToLower().Contains("bottom"))
+					{
+						height += 5;
+						if (height > 0)
+							mainWindow.Height = height;
+					}
+					if (senderRect.Name.ToLower().Contains("top"))
+					{
+						height -= 5;
+						mainWindow.Top += height;
+						height = mainWindow.Height - height;
+						if (height > 0)
+						{
+							mainWindow.Height = height;
+						}
+					}
+				}
+			}
+		}
+        #endregion
+
     }
 }

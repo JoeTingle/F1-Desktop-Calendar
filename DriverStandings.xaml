@@ -7,6 +7,17 @@
         xmlns:control = "clr-namespace:F1_Desktop_Calendar" 
         mc:Ignorable="d"
         Title="Driver Standings" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" BorderBrush="#FFFF0909" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <FontFamily x:Key="F1Font" >/Fonts/#Titillium Bd</FontFamily>
+        <Style x:Key="RectBorderStyle" TargetType="Rectangle">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Resize_Init"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="Resize_End"/>
+            <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="MainGridPanel" MouseDown="Window_MouseDown" PreviewMouseDown="Window_MouseDown" Loaded="Window_Loaded" Margin="0,0,0,0" Background="#00FF0000" RenderTransformOrigin="1,1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="49*"/>
@@ -37,5 +48,58 @@
 
             </StackPanel>
         </ScrollViewer>
+        <Grid x:Name="ResizeGrid" IsEnabled="False" Grid.ColumnSpan="2">
+            <Rectangle x:Name="leftSizeGrip"
+    Width="7"
+    HorizontalAlignment="Left"
+    Cursor="SizeWE"
+    Style="{StaticResource RectBorderStyle}" MouseEnter="MouseOver" MouseLeave="MouseExit" />
+            <Rectangle x:Name="rightSizeGrip"
+    Width="7"
+    HorizontalAlignment="Right"
+    Cursor="SizeWE"
+    Style="{StaticResource RectBorderStyle}" MouseEnter="MouseOver" MouseLeave="MouseExit" />
+            <Rectangle x:Name="topSizeGrip"
+    Height="7"
+    VerticalAlignment="Top"
+    Cursor="SizeNS"
+    Style="{StaticResource RectBorderStyle}" MouseEnter="MouseOver" MouseLeave="MouseExit" />
+            <Rectangle x:Name="bottomSizeGrip"
+    Height="7"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNS"
+    Style="{StaticResource RectBorderStyle}" MouseEnter="MouseOver" MouseLeave="MouseExit" />
+            <!--  Corners  -->
+            <Rectangle Name="topLeftSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Top"
+    Cursor="SizeNWSE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="bottomRightSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNWSE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="topRightSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    Cursor="SizeNESW"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="bottomLeftSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNESW"
+    Style="{StaticResource RectBorderStyle}" />
+        </Grid>
     </Grid>
+    
+    
 </Window>

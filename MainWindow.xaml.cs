@@ -17,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Collections;
+using System.Windows.Shapes;
 
 namespace F1_Desktop_Calendar
 {
@@ -787,11 +788,11 @@ namespace F1_Desktop_Calendar
 			}
 		}
 
-		public void RestartResultsAPICall()
+		public async Task RestartResultsAPICallAsync()
 		{
 			Debug.WriteLine("\nRESTARTING RESULTS API CALL...	\n)");
 			GetRaceResults();
-			Task.Delay(5000);
+			await Task.Delay(1000);
 			Debug.WriteLine("\nCALL COMPLETE, ADJUSTING ROUNDS...	\n)");
 			AdjustPrevRounds();
 		}
@@ -829,7 +830,7 @@ namespace F1_Desktop_Calendar
                     else
                     {
 						Debug.WriteLine("\n\nERROR : Results Data Null (API Call Not Completed ?\n\n)");
-						RestartResultsAPICall();
+						await RestartResultsAPICallAsync();
                     }
 
 				}
@@ -1150,5 +1151,90 @@ namespace F1_Desktop_Calendar
 			ConstructorStandings constructorStandings = new ConstructorStandings();
 			constructorStandings.Show();
         }
-    }
+
+        private void SetBorderStyleTransparent(object sender, RoutedEventArgs e)
+        {
+			EnableBlur();
+			BorderStyleDot.Visibility = Visibility.Visible;
+			BorderStyleBlue.Visibility = Visibility.Hidden;
+        }
+
+        private void SetBorderStyleBlue(object sender, RoutedEventArgs e)
+        {
+			DisableBlur();
+			BorderStyleBlue.Visibility = Visibility.Visible;
+			BorderStyleDot.Visibility = Visibility.Hidden;
+		}
+
+		#region ResizeWindows
+		bool ResizeInProcess = false;
+		private void Resize_Init(object sender, MouseButtonEventArgs e)
+		{
+			Rectangle senderRect = sender as Rectangle;
+			if (senderRect != null)
+			{
+				ResizeInProcess = true;
+				senderRect.CaptureMouse();
+			}
+		}
+
+		private void Resize_End(object sender, MouseButtonEventArgs e)
+		{
+			Rectangle senderRect = sender as Rectangle;
+			if (senderRect != null)
+			{
+				ResizeInProcess = false; ;
+				senderRect.ReleaseMouseCapture();
+			}
+		}
+
+		private void Resizeing_Form(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (ResizeInProcess)
+			{
+				Rectangle senderRect = sender as Rectangle;
+				Window mainWindow = senderRect.Tag as Window;
+				if (senderRect != null)
+				{
+					double width = e.GetPosition(mainWindow).X;
+					double height = e.GetPosition(mainWindow).Y;
+					senderRect.CaptureMouse();
+					if (senderRect.Name.ToLower().Contains("right"))
+					{
+						width += 5;
+						if (width > 0)
+							mainWindow.Width = width;
+					}
+					if (senderRect.Name.ToLower().Contains("left"))
+					{
+						width -= 5;
+						mainWindow.Left += width;
+						width = mainWindow.Width - width;
+						if (width > 0)
+						{
+							mainWindow.Width = width;
+						}
+					}
+					if (senderRect.Name.ToLower().Contains("bottom"))
+					{
+						height += 5;
+						if (height > 0)
+							mainWindow.Height = height;
+					}
+					if (senderRect.Name.ToLower().Contains("top"))
+					{
+						height -= 5;
+						mainWindow.Top += height;
+						height = mainWindow.Height - height;
+						if (height > 0)
+						{
+							mainWindow.Height = height;
+						}
+					}
+				}
+			}
+		}
+		#endregion
+
+	}
 }

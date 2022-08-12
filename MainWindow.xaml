@@ -10,6 +10,14 @@
         Title="Calendar" Height="800" Width="450" ResizeMode="CanMinimize" ShowInTaskbar="False" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" Background="#00FF0000" Closed="Window_Closed" Closing="Window_Closing" Visibility="Visible">
     <Window.Resources>
         <FontFamily x:Key="F1Font" >/Fonts/#Titillium Bd</FontFamily>
+        <Style x:Key="RectBorderStyle" TargetType="Rectangle">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Resize_Init"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="Resize_End"/>
+            <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
+        </Style>
     </Window.Resources>
     <Grid x:Name="MainGridPanel" MouseDown="Window_MouseDown" PreviewMouseDown="Window_MouseDown" Loaded="Window_Loaded" Margin="10,10,10,10" Background="#00FF0000" RenderTransformOrigin="1,1">
         <Grid.RenderTransform>
@@ -18,7 +26,7 @@
             </TransformGroup>
         </Grid.RenderTransform>
         <Border x:Name="Border_Behind" CornerRadius="20" BorderBrush="#3FFFFFFF" BorderThickness="1.75" Opacity="0.115" Margin="-9,-9,-9,-9" Background="#0CFFFFFF"/>
-        <Border x:Name="Border" CornerRadius="10" BorderBrush="#3F000000" BorderThickness="1" Margin="0,0,0,10" >
+        <Border x:Name="BorderStyleDot" CornerRadius="10" BorderBrush="#3F000000" BorderThickness="1" Margin="0,0,0,10" Visibility="Visible">
             <Border.Background>
                 <VisualBrush Stretch="Fill">
                     <VisualBrush.Visual>
@@ -27,6 +35,7 @@
                 </VisualBrush>
             </Border.Background>
         </Border>
+        <Border x:Name="BorderStyleBlue" CornerRadius="10" BorderBrush="#3F000000" BorderThickness="1" Margin="0,0,0,10" Background="#FF0E1017" Visibility="Hidden"/>
         <StackPanel x:Name="Stack" Margin="0,10,0,115">
             <control:RaceItemEntry x:Name="Race1"/>
             <control:RaceItemEntry x:Name="Race2"/>
@@ -51,7 +60,7 @@
             <control:RaceItemEntry x:Name="Race21"/>
             <control:RaceItemEntry x:Name="Race22"/>
         </StackPanel>
-        <control:NextRace x:Name="NextRaceItem" Margin="0,676,0,-5"/>
+        <control:NextRace x:Name="NextRaceItem" Margin="0,676,0,-5" VerticalAlignment="Bottom"/>
 
         <tb:TaskbarIcon x:Name="AppIcon" ToolTipText="F1 Season Calendar" IconSource="/trafficbig.ico" Margin="0,0,0,114">
 
@@ -59,6 +68,10 @@
                 <ContextMenu
                 Background="White">
                     <MenuItem Header="SETTINGS" IsCheckable="False" IsChecked="False" StaysOpenOnClick="True" />
+                    <MenuItem Header="Styles" IsCheckable="False" IsChecked="False" StaysOpenOnClick="True">
+                        <MenuItem Header="- Transparent" StaysOpenOnClick="False" Click="SetBorderStyleTransparent" />
+                        <MenuItem Header="- Blue Background" StaysOpenOnClick="False" Click="SetBorderStyleBlue" />
+                    </MenuItem>
                     <MenuItem Header="- Lock Movement ?" IsCheckable="True" IsChecked="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked" StaysOpenOnClick="True" />
                     <MenuItem x:Name="StartupCheckBox" Header="- Run On Startup [W.I.P]" IsCheckable="False" IsChecked="True" Checked="SetStartup" Unchecked="SetStartup" StaysOpenOnClick="True" />
                     <MenuItem x:Name="ShowResultsCheckBox" Header="- Show All Results ?" IsCheckable="True" IsChecked="False" Checked="ShowResultsCheckBox_Checked" Unchecked="ShowResultsCheckBox_Unchecked" StaysOpenOnClick="True" />
@@ -74,5 +87,57 @@
             </tb:TaskbarIcon.ContextMenu>
 
         </tb:TaskbarIcon>
+        <Grid x:Name="ResizeGrid" IsEnabled="False">
+            <Rectangle x:Name="leftSizeGrip"
+    Width="7"
+    HorizontalAlignment="Left"
+    Cursor="SizeWE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle x:Name="rightSizeGrip"
+    Width="7"
+    HorizontalAlignment="Right"
+    Cursor="SizeWE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle x:Name="topSizeGrip"
+    Height="7"
+    VerticalAlignment="Top"
+    Cursor="SizeNS"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle x:Name="bottomSizeGrip"
+    Height="7"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNS"
+    Style="{StaticResource RectBorderStyle}" />
+            <!--  Corners  -->
+            <Rectangle Name="topLeftSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Top"
+    Cursor="SizeNWSE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="bottomRightSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNWSE"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="topRightSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    Cursor="SizeNESW"
+    Style="{StaticResource RectBorderStyle}" />
+            <Rectangle Name="bottomLeftSizeGrip"
+    Width="7"
+    Height="7"
+    HorizontalAlignment="Left"
+    VerticalAlignment="Bottom"
+    Cursor="SizeNESW"
+    Style="{StaticResource RectBorderStyle}" />
+        </Grid>
+
     </Grid>
 </Window>
