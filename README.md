@@ -21,4 +21,5 @@ The F1 desktop calendar app will display all of the scheduled races in the curre
 - Run on startup not currently working
 
 ## Planned Features
-- Theme Selector (Light / Dark / Custom etc.)
+- Cache API call results
+- Replace system tray context menu with new GUI
